@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/aptoivonen/clicker-colony/issues"
   },
-  "homepage": "https://github.com/aptoivonen/clicker-colony#readme"
+  "homepage": "https://github.com/aptoivonen/clicker-colony#readme",
+  "devDependencies": {
+    "sass": "^1.32.7"
+  }
 }
