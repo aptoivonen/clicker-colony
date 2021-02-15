@@ -1,5 +1,12 @@
-$color: red;
+$color: lightblue;
 
 body {
+  min-height: 100vh;
+  margin: 0;
   background: $color;
+  backdrop-filter: blur(5px);
+}
+
+.ei-oo {
+  background: black;
 }
