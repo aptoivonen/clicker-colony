@@ -20,6 +20,7 @@
   "homepage": "https://github.com/aptoivonen/clicker-colony#readme",
   "devDependencies": {
     "parcel-bundler": "^1.12.4",
+    "parcel-plugin-nuke-dist": "^1.0.1",
     "sass": "^1.32.7"
   }
 }
