@@ -25,5 +25,8 @@
     "parcel-plugin-purgecss": "^3.0.0",
     "postcss-modules": "^4.0.0",
     "sass": "^1.32.7"
+  },
+  "dependencies": {
+    "bootstrap": "^5.0.0-beta2"
   }
 }
