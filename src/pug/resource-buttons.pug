@@ -1,0 +1,16 @@
+- 
+  const resourceBlocks = [
+      { name: "CyberCoins", button: "Mine CyberCoins" },
+      { name: "Power", button: "Generate" },
+    ]
+
+mixin resourceBlock(name, button)
+  .col-6.col-sm-4
+    .input-group
+      label.input-group-text= name
+      button.btn.btn-outline-secondary= button
+
+.container 
+  .row.gx-2.gy-3
+    each block in resourceBlocks
+      +resourceBlock(block.name, block.button)
