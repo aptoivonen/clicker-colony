@@ -15,7 +15,7 @@ mixin resourceBlock(id, name, icon)
         span.ms-2.text-start.resource-name #{name}
         span.ms-2.resource-amount(id=id + '-amount')
         span.ms-2.resource-change(id=id + '-change')
-      button.col-2.btn.btn-outline-secondary
+      button.col-2.btn.btn-outline-secondary(id=id + '-button')
         i.bi.bi-plus-square-fill(style='color: green;')
 
 .container 
