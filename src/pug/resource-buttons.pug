@@ -1,19 +1,24 @@
 - 
   const resourceBlocks = [
-      { name: "CyberCoins", icon: "bi-cash-stack" },
-      { name: "Power", icon: "bi-lightning-fill" },
+      { id: "coins", name: "CyberCoins", icon: "bi-cash-stack" },
+      { id: "colonists", name: "Colonists", icon: "bi-people-fill" },
+      { id: "power", name: "Power", icon: "bi-lightning-fill" },
+      { id: "copper", name: "Copper", icon: "bi-pentagon-fill" },
+      { id: "lead", name: "Lead", icon: "bi-suit-spade-fill" },
     ]
 
-mixin resourceBlock(name, icon)
+mixin resourceBlock(id, name, icon)
   .col-12
     .input-group
       label.col-10.input-group-text 
         i.bi(class='' + icon)
-        span.ms-2 #{name}
+        span.ms-2.text-start.resource-name #{name}
+        span.ms-2.resource-amount(id=id + '-amount')
+        span.ms-2.resource-change(id=id + '-change')
       button.col-2.btn.btn-outline-secondary
         i.bi.bi-plus-square-fill(style='color: green;')
 
 .container 
   .row.gx-2.gy-3
     each block in resourceBlocks
-      +resourceBlock(block.name, block.icon)
+      +resourceBlock(block.id, block.name, block.icon)
