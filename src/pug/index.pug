@@ -11,6 +11,15 @@ html(lang="en")
     header.mb-3.text-center
       h1 Colony Clicker
     main
-      include resource-buttons.pug
+      ul.nav.nav-tabs#colonyTab(role="tablist")
+        li.nav-item(role="presentation")
+          button.nav-link.active#home-tab(data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true") Home
+        li.nav-item(role="presentation")
+          button.nav-link#building-tab(data-bs-toggle="tab" data-bs-target="#building" type="button" role="tab" aria-controls="building" aria-selected="true") Buildings
+      .tab-content#tabContent
+        .tab-pane.fade.show.active#home(role="tabpanel" aria-labelledby="home-tab")
+          include resource-buttons.pug
+        .tab-pane.fade#building(role="tabpanel" aria-labelledby="building-tab")
+          include buildings.pug
+      
     script(src="../js/app.js")
-
