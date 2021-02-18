@@ -1,16 +1,19 @@
 - 
   const resourceBlocks = [
-      { name: "CyberCoins", button: "Mine CyberCoins" },
-      { name: "Power", button: "Generate" },
+      { name: "CyberCoins", button: "Mine CyberCoins", icon: "bi-file-music-fill" },
+      { name: "Power", button: "Generate", icon: "bi-file-richtext" },
     ]
 
-mixin resourceBlock(name, button)
+mixin resourceBlock(name, button, icon)
   .col-12
     .input-group
-      label.col-6.input-group-text= name
+      label.col-6.input-group-text 
+        i.bi(class='' + icon)
+        .
+          #{name}
       button.col-6.btn.btn-outline-secondary= button
 
 .container 
   .row.gx-2.gy-3
     each block in resourceBlocks
-      +resourceBlock(block.name, block.button)
+      +resourceBlock(block.name, block.button, block.icon)
