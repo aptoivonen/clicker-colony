@@ -18,7 +18,7 @@ mixin resourceBlock(id, name, icon)
       button.col-2.btn.btn-outline-secondary(id=id + '-button')
         i.bi.bi-plus-square-fill(style='color: green;')
 
-.container 
+.container.px-0 
   .row.gx-2.gy-3
     each block in resourceBlocks
       +resourceBlock(block.id, block.name, block.icon)
