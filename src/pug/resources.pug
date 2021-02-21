@@ -20,6 +20,6 @@ mixin resourceBlock(id, name, icon)
         .d-flex.align-items-center 
           span.ms-2.resource-change(id=id + '-change')
 
-.row.gy-3.px-0
+.row.gy-1.px-0
   each block in resourceBlocks
     +resourceBlock(block.id, block.name, block.icon)
