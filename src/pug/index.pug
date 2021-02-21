@@ -11,15 +11,16 @@ html(lang="en")
     header.mb-3.text-center
       h1 Colony Clicker
     main
-      ul.nav.nav-tabs.mb-3#colonyTab(role="tablist")
-        li.nav-item(role="presentation")
-          button.nav-link.active#resources-tab(data-bs-toggle="tab" data-bs-target="#resources" type="button" role="tab" aria-controls="resources" aria-selected="true") Resources
-        li.nav-item(role="presentation")
-          button.nav-link#building-tab(data-bs-toggle="tab" data-bs-target="#building" type="button" role="tab" aria-controls="building" aria-selected="true") Buildings
-      .tab-content#tabContent
-        .tab-pane.fade.show.active#resources(role="tabpanel" aria-labelledby="resources-tab")
-          include resources.pug
-        .tab-pane.fade#building(role="tabpanel" aria-labelledby="building-tab")
-          include buildings.pug
+      .container
+        ul.nav.nav-tabs.mb-3#colonyTab(role="tablist")
+          li.nav-item(role="presentation")
+            button.nav-link.active#resources-tab(data-bs-toggle="tab" data-bs-target="#resources" type="button" role="tab" aria-controls="resources" aria-selected="true") Resources
+          li.nav-item(role="presentation")
+            button.nav-link#building-tab(data-bs-toggle="tab" data-bs-target="#building" type="button" role="tab" aria-controls="building" aria-selected="true") Buildings
+        .tab-content#tabContent
+          .tab-pane.fade.show.active#resources(role="tabpanel" aria-labelledby="resources-tab")
+            include resources.pug
+          .tab-pane.fade#building(role="tabpanel" aria-labelledby="building-tab")
+            include buildings.pug
       
     script(src="../js/app.js")

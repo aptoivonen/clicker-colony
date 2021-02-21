@@ -9,16 +9,17 @@
 
 mixin resourceBlock(id, name, icon)
   .col-12
-    .input-group
-      label.col-10.input-group-text 
-        i.bi(class='' + icon)
-        span.ms-2.text-start.resource-name #{name}
-        span.ms-2.resource-amount(id=id + '-amount')
-        span.ms-2.resource-change(id=id + '-change')
-      button.col-2.btn.btn-outline-secondary(id=id + '-button')
-        i.bi.bi-plus-square-fill(style='color: green;')
+    .card
+      .card-body.d-flex.flex-row.p-0 
+        button.btn.resource-btn 
+          i.d-flex.align-items-center.justify-content-center.bi(class='' + icon).resource-icon
+        .d-flex.align-items-center.flex-grow-1 
+          span.ms-2.text-start.resource-name #{name}
+        .d-flex.align-items-center 
+          span.ms-2.resource-amount(id=id + '-amount')
+        .d-flex.align-items-center 
+          span.ms-2.resource-change(id=id + '-change')
 
-.container.px-0 
-  .row.gx-2.gy-3
-    each block in resourceBlocks
-      +resourceBlock(block.id, block.name, block.icon)
+.row.gy-3.px-0
+  each block in resourceBlocks
+    +resourceBlock(block.id, block.name, block.icon)

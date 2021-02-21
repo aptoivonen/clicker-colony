@@ -1,11 +1,26 @@
+$name-min-width: 10ch;
+$amount-min-width: 4ch;
+$change-min-width: 4ch;
+$resource-icon-size: 2.5rem;
+
 .resource-name {
-  min-width: 10ch;
+  min-width: $name-min-width;
 }
 
 .resource-amount {
-  min-width: 4ch;
+  min-width: $amount-min-width;
 }
 
 .resource-change {
-  min-width: 4ch;
+  min-width: $change-min-width;
+}
+
+.resource-btn {
+  padding: 0;
+  border: 1px solid red;
+}
+
+.resource-icon {
+  height: $resource-icon-size;
+  width: $resource-icon-size;
 }
