@@ -2,3 +2,15 @@
   height: $building-icon-size;
   width: $building-icon-size;
 }
+
+.building-name {
+  min-width: $building-name-min-width;
+}
+
+.building-level {
+  min-width: $building-level-min-width;
+}
+
+.building-workers {
+  min-width: $building-workers-min-width;
+}

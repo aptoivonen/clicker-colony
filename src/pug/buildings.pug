@@ -1,7 +1,9 @@
 - 
   const buildingBlocks = [
       { id: "quarters", name: "Quarters", icon: "bi-house-fill" },
-      { id: "generator", name: "Generator", icon: "bi-house-fill" },
+      { id: "generator", name: "Generator", icon: "bi-lightbulb-fill" },
+      { id: "copper-mine", name: "Copper Mine", icon: "bi-cart-fill" },
+      { id: "lead-mine", name: "Lead Mine", icon: "bi-cart-fill" },
       
     ]
 
@@ -10,8 +12,16 @@ mixin buildingBlock(id, name, icon)
     .card
       .card-body.d-flex.flex-row.p-0 
         i.d-flex.align-items-center.justify-content-center.bi(class='' + icon).building-icon
-        .d-flex.align-items-center.flex-grow-1 
+        .d-flex.align-items-center.flex-grow-1.border-start 
           span.ms-2.text-start.building-name #{name}
+        .d-flex.align-items-center.border-start
+          span.ms-2.text-start.building-workers(id=id + '-workers') 0
+          i.d-flex.align-items-center.justify-content-center.bi.bi-file-minus.building-icon
+          i.d-flex.align-items-center.justify-content-center.bi.bi-file-plus.building-icon
+        .d-flex.align-items-center.border-start
+          span.ms-2.text-start.building-level(id=id + '-level') 0
+          i.d-flex.align-items-center.justify-content-center.bi.bi-file-plus.building-icon
+
 
 .row.gy-1.px-0
   each block in buildingBlocks
