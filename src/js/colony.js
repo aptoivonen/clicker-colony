@@ -1,6 +1,6 @@
 const resources = ["coins", "colonists", "power", "copper", "lead"];
 
-const getDomElements = (resourceId) => {
+const getResourceDomElements = (resourceId) => {
   return {
     amount: document.getElementById(resourceId + "-amount"),
     change: document.getElementById(resourceId + "-change"),
@@ -8,7 +8,7 @@ const getDomElements = (resourceId) => {
   };
 };
 
-const initResource = (resourceObj) => {
+const initResourceBlock = (resourceObj) => {
   resourceObj.amount.textContent = "0";
   resourceObj.change.textContent = "+ 0";
   resourceObj.button.addEventListener("click", (event) => {
@@ -19,8 +19,8 @@ const initResource = (resourceObj) => {
 export default class Colony {
   constructor() {
     resources.forEach((resourceId) => {
-      this[resourceId] = getDomElements(resourceId);
-      initResource(this[resourceId]);
+      this[resourceId] = getResourceDomElements(resourceId);
+      initResourceBlock(this[resourceId]);
     });
   }
 }
