@@ -11,16 +11,19 @@ mixin buildingBlock(id, name, icon)
   .col-12
     .card
       .card-body.d-flex.flex-row.p-0 
-        i.d-flex.align-items-center.justify-content-center.bi(class='' + icon).building-icon-size
-        .d-flex.align-items-center.flex-grow-1.border-start 
+        .d-flex.align-items-center.flex-grow-1.ms-1 
+          i.d-flex.align-items-center.justify-content-center.bi(class='' + icon)
           span.ms-2.text-start.building-name-min-width #{name}
         .d-flex.align-items-center.border-start
           span.ms-2.text-start.building-workers-min-width(id=id + '-workers') 0
-          i.d-flex.align-items-center.justify-content-center.bi.bi-file-minus.building-icon-size
-          i.d-flex.align-items-center.justify-content-center.bi.bi-file-plus.building-icon-size
+          button.btn.p-0(id=id + '-workers-decrease-button')
+            i.d-flex.align-items-center.justify-content-center.bi.bi-file-minus.building-icon-size
+          button.btn.p-0(id=id + '-workers-increase-button')
+            i.d-flex.align-items-center.justify-content-center.bi.bi-file-plus.building-icon-size
         .d-flex.align-items-center.border-start
           span.ms-2.text-start.building-level-min-width(id=id + '-level') 0
-          i.d-flex.align-items-center.justify-content-center.bi.bi-file-plus.building-icon-size
+          button.btn.p-0(id=id + '-level-button')
+            i.d-flex.align-items-center.justify-content-center.bi.bi-file-plus.building-icon-size
 
 
 .row.gy-1.px-0
