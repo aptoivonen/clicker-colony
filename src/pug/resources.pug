@@ -13,11 +13,11 @@ mixin resourceBlock(id, name, icon)
       .card-body.d-flex.flex-row.p-0 
         button.btn.resource-btn(id=id + '-button') 
           i.d-flex.align-items-center.justify-content-center.bi(class='' + icon).resource-icon
-        .d-flex.align-items-center.flex-grow-1 
+        .d-flex.align-items-center.flex-grow-1.border-start 
           span.ms-2.text-start.resource-name #{name}
-        .d-flex.align-items-center 
+        .d-flex.align-items-center.border-start 
           span.ms-2.resource-amount(id=id + '-amount')
-        .d-flex.align-items-center 
+        .d-flex.align-items-center.border-start 
           span.ms-2.resource-change(id=id + '-change')
 
 .row.gy-1.px-0
