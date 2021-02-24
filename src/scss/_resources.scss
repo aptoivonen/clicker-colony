@@ -1,21 +1,20 @@
-.resource-name {
+.resource-name-min-width {
   min-width: $resource-name-min-width;
 }
 
-.resource-amount {
+.resource-amount-min-width {
   min-width: $resource-amount-min-width;
 }
 
-.resource-change {
+.resource-change-min-width {
   min-width: $resource-change-min-width;
 }
 
 .resource-btn {
-  padding: 0;
   border: 1px solid red;
 }
 
-.resource-icon {
+.resource-icon-size {
   height: $resource-icon-size;
   width: $resource-icon-size;
 }
