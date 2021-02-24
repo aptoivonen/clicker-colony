@@ -1,18 +1,13 @@
-$name-min-width: 10ch;
-$amount-min-width: 4ch;
-$change-min-width: 4ch;
-$resource-icon-size: 2.5rem;
-
 .resource-name {
-  min-width: $name-min-width;
+  min-width: $resource-name-min-width;
 }
 
 .resource-amount {
-  min-width: $amount-min-width;
+  min-width: $resource-amount-min-width;
 }
 
 .resource-change {
-  min-width: $change-min-width;
+  min-width: $resource-change-min-width;
 }
 
 .resource-btn {
