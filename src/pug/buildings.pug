@@ -1,0 +1,18 @@
+- 
+  const buildingBlocks = [
+      { id: "quarters", name: "Quarters", icon: "bi-house-fill" },
+      { id: "generator", name: "Generator", icon: "bi-house-fill" },
+      
+    ]
+
+mixin buildingBlock(id, name, icon)
+  .col-12
+    .card
+      .card-body.d-flex.flex-row.p-0 
+        i.d-flex.align-items-center.justify-content-center.bi(class='' + icon).building-icon
+        .d-flex.align-items-center.flex-grow-1 
+          span.ms-2.text-start.building-name #{name}
+
+.row.gy-1.px-0
+  each block in buildingBlocks
+    +buildingBlock(block.id, block.name, block.icon)
