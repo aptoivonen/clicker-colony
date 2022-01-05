@@ -1,9 +1,22 @@
+/**
+ * Checks if targetResourcesObj has required resources
+ * @param {{}} resourcesRequirementObj what resources target should have
+ * @param {{}} targetResourcesObj target resources, typically state.resources
+ * @returns {boolean} does target have required resources available
+ */
 export const hasResources = (resourcesRequirementObj, targetResourcesObj) =>
   Object.entries(resourcesRequirementObj).every(
     ([entryKey, entryValue]) =>
       entryValue >= 0 && targetResourcesObj[entryKey] >= entryValue
   );
 
+/**
+ * Decrements resources by returning new result object.
+ * Original objects remain untouched.
+ * @param {{}} resourcesRequirementObj resources to decrement
+ * @param {{}} targetResourcesObj target resources, typically state.resources
+ * @returns {{}} resultResourcesObj the result of the decrement
+ */
 export const decrementResources = (
   resourcesRequirementObj,
   targetResourcesObj
