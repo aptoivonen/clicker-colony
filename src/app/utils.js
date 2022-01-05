@@ -49,20 +49,12 @@ export const getResourceMultiplier = (
   );
 
 /**
- * Returns the number of idle colonists.
- * Useful, because if state structure changes, only this function needs to be changed.
- * @param {{}} state global state object
- * @returns {number} the number of idle colonists
- */
-export const getIdleColonists = (state) => state.colonists.idle;
-
-/**
  * Counts the number of all colonists, including idle ones and ones working in buildings.
  * @param {!{buildings: {}}} state global state object
  * @returns {number} the number of all colonists
  */
 export const getAllColonists = (state) =>
-  getIdleColonists(state) +
+  state.colonists.idle +
   Object.values(state.buildings).reduce(
     (previousSum, currentBuilding) =>
       previousSum + (currentBuilding.workers || 0),
