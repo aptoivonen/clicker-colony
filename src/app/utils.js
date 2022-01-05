@@ -15,7 +15,7 @@ export const hasResources = (resourcesRequirementObj, targetResourcesObj) =>
  * Original objects remain untouched.
  * @param {{}} resourcesRequirementObj resources to decrement
  * @param {{}} targetResourcesObj target resources, typically state.resources
- * @returns {{}} resultResourcesObj the result of the decrement
+ * @returns {{}} the result of the decrement
  */
 export const decrementResources = (
   resourcesRequirementObj,
@@ -30,11 +30,34 @@ export const decrementResources = (
   return newTargetResourcesObj;
 };
 
+/**
+ * Calculates how many times over resourcesRequirementObj are in targetResourcesObj.
+ * @param {{}} resourcesRequirementObj resources to multiply
+ * @param {{}} targetResourcesObj target resources
+ * @returns {number} how many times resourcesRequirementObj can be found in targetResourcesObj
+ */
+export const getResourceMultiplier = (
+  resourcesRequirementObj,
+  targetResourcesObj
+) =>
+  Math.min(
+    ...Object.entries(resourcesRequirementObj).map(([entryKey, entryValue]) => {
+      const targetResourceValue = targetResourcesObj[entryKey];
+      if (!targetResourceValue) return 0;
+      return Math.floor(targetResourceValue / entryValue);
+    })
+  );
+
+/**
+ * Returns the number of idle colonists.
+ * Useful, because if state structure changes, only this function needs to be changed.
+ * @param {{}} state global state object
+ * @returns {number} the number of idle colonists
+ */
 export const getIdleColonists = (state) => state.colonists.idle;
 
 /**
  * Counts the number of all colonists, including idle ones and ones working in buildings.
- * If a building can't have workers, it if skipped.
  * @param {!{buildings: {}}} state global state object
  * @returns {number} the number of all colonists
  */
