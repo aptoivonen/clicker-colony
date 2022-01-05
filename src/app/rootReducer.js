@@ -5,6 +5,7 @@ import {
   addResourceReducer,
   addColonistReducer,
 } from "app/reducers";
+import { getIdleColonists } from "app/utils";
 
 const addResource = createAction("addResource");
 const addColonist = createAction("addColonist");
@@ -29,7 +30,7 @@ export const selectResources = createSelector(
 
 export const selectIdleColonists = createSelector(
   (state) => state,
-  (state) => state.colonists.idle
+  getIdleColonists
 );
 
 export { addResource, addColonist, update };

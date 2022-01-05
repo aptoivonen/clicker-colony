@@ -16,3 +16,7 @@ export const decrementResources = (
   );
   return newTargetResourcesObj;
 };
+
+export const getIdleColonists = (state) => state.colonists.idle;
+
+// export const getAllColonists = state =>
