@@ -4,7 +4,7 @@ import {
   selectResources,
   selectIdleColonists,
   selectAllColonists,
-} from "app/rootReducer";
+} from "app/selectors";
 
 const InfoPanel = () => {
   const round = useSelector(selectRound);
