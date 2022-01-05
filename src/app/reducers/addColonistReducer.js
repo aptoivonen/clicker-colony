@@ -1,16 +1,15 @@
 import { hasResources, decrementResources } from "app/utils";
 
 const addColonistReducer = (state) => {
-  const canAddColonist = hasResources(
-    state.colonists.hireCost,
-    state.resources
-  );
+  const {
+    resources,
+    colonists: { hireCost },
+  } = state;
+
+  const canAddColonist = hasResources(hireCost, resources);
 
   if (canAddColonist) {
-    state.resources = decrementResources(
-      state.colonists.hireCost,
-      state.resources
-    );
+    state.resources = decrementResources(hireCost, resources);
     state.colonists.idle += 1;
   }
 };
