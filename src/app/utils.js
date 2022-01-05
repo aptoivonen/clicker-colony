@@ -19,4 +19,16 @@ export const decrementResources = (
 
 export const getIdleColonists = (state) => state.colonists.idle;
 
-// export const getAllColonists = state =>
+/**
+ * Counts the number of all colonists, including idle ones and ones working in buildings.
+ * If a building can't have workers, it if skipped.
+ * @param {!{buildings: {}}} state global state object
+ * @returns {number} the number of all colonists
+ */
+export const getAllColonists = (state) =>
+  getIdleColonists(state) +
+  Object.values(state.buildings).reduce(
+    (previousSum, currentBuilding) =>
+      previousSum + (currentBuilding.workers || 0),
+    0
+  );
