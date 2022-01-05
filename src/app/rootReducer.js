@@ -2,18 +2,18 @@ import { createAction, createReducer, createSelector } from "@reduxjs/toolkit";
 import initialState from "app/initialState";
 import {
   updateReducer,
-  addResourceReducer,
+  clickResourceReducer,
   addColonistReducer,
 } from "app/reducers";
 import { getIdleColonists, getAllColonists } from "app/utils";
 
-const addResource = createAction("addResource");
+const clickResource = createAction("clickResource");
 const addColonist = createAction("addColonist");
 const update = createAction("update");
 
 const rootReducer = createReducer(initialState, (builder) => {
   builder
-    .addCase(addResource, addResourceReducer)
+    .addCase(clickResource, clickResourceReducer)
     .addCase(addColonist, addColonistReducer)
     .addCase(update, updateReducer);
 });
@@ -38,6 +38,6 @@ export const selectAllColonists = createSelector(
   getAllColonists
 );
 
-export { addResource, addColonist, update };
+export { clickResource, addColonist, update };
 
 export default rootReducer;
