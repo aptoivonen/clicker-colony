@@ -63,13 +63,14 @@ export const getAllColonists = (state) =>
 
 /**
  * Counts the total capacity to quarter colonists in the colony,
- * by adding up all buildings' colonist capacity.
+ * by adding up all buildings' colonist capacity times building level.
  * @param {{}} state
  * @returns {number} the capacity to hold colonists
  */
 export const getColonistCapacity = (state) =>
   Object.values(state.buildings).reduce(
     (previousSum, currentBuilding) =>
-      previousSum + (currentBuilding?.capacity?.colonists || 0),
+      previousSum +
+      currentBuilding.level * (currentBuilding?.capacity?.colonists || 0),
     0
   );
