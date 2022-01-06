@@ -4,6 +4,7 @@ import {
   selectResources,
   selectIdleColonists,
   selectAllColonists,
+  selectColonistsCapacity,
 } from "app/selectors";
 
 const InfoPanel = () => {
@@ -11,6 +12,7 @@ const InfoPanel = () => {
   const { food, money, copper, lead, power } = useSelector(selectResources);
   const idleColonists = useSelector(selectIdleColonists);
   const allColonists = useSelector(selectAllColonists);
+  const colonistsCapacity = useSelector(selectColonistsCapacity);
 
   return (
     <div className="flex">
@@ -23,6 +25,7 @@ const InfoPanel = () => {
       <span className="mx-1">
         Colonists {idleColonists} / {allColonists}
       </span>
+      <span className="mx-1">Quarters {colonistsCapacity}</span>
     </div>
   );
 };

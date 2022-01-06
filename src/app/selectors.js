@@ -1,5 +1,9 @@
 import { createSelector } from "@reduxjs/toolkit";
-import { getAllColonists } from "app/utils";
+import {
+  getAllColonists,
+  getColonistCapacity,
+  hasAvailableColonistCapacity,
+} from "app/utils";
 
 const identityFn = (state) => state;
 
@@ -16,3 +20,13 @@ export const selectIdleColonists = createSelector(
 );
 
 export const selectAllColonists = createSelector(identityFn, getAllColonists);
+
+export const selectColonistsCapacity = createSelector(
+  identityFn,
+  getColonistCapacity
+);
+
+export const selectHasAvailableColonistCapacity = createSelector(
+  identityFn,
+  hasAvailableColonistCapacity
+);

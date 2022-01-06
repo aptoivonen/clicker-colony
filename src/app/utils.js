@@ -74,3 +74,11 @@ export const getColonistCapacity = (state) =>
       currentBuilding.level * (currentBuilding?.capacity?.colonists || 0),
     0
   );
+
+/**
+ * Answers, is there capacity available for a new colonist.
+ * @param {{}} state
+ * @returns {boolean} is there capacity available for a new colonist
+ */
+export const hasAvailableColonistCapacity = (state) =>
+  getColonistCapacity(state) > getAllColonists(state);
