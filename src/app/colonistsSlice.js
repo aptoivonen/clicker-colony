@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createSelector } from "@reduxjs/toolkit";
 import { colonistAdded } from "app/actionCreators";
 import {
   selectWorkers,
@@ -33,12 +33,20 @@ export const selectColonistHireCost = (state) => state.colonists.hireCost;
 export const selectAllColonists = (state) =>
   selectIdleColonists(state) + selectWorkers(state);
 
+export const selectCanAddColonist = createSelector(
+  [
+    (state) => state,
+    selectColonistHireCost,
+    selectHasAvailableColonistCapacity,
+  ],
+  (state, hireCost, hasAvailableColonistCapacity) =>
+    selectHasEnoughResources(state, hireCost) && hasAvailableColonistCapacity
+);
+
 export const addColonistThunk = () => (dispatch, getState) => {
   const state = getState();
   const hireCost = selectColonistHireCost(state);
-  const canAddColonist =
-    selectHasEnoughResources(state, hireCost) &&
-    selectHasAvailableColonistCapacity(state);
+  const canAddColonist = selectCanAddColonist(state);
   if (canAddColonist) {
     dispatch(colonistAdded(hireCost));
   }
