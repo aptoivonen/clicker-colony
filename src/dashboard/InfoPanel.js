@@ -4,7 +4,7 @@ import { selectResources } from "app/resourcesSlice";
 import { selectIdleColonists } from "app/colonistsSlice";
 import { addColonistThunk } from "app/colonistsSlice";
 
-const InfoPanel2 = () => {
+const InfoPanel = () => {
   const dispatch = useDispatch();
 
   const round = useSelector(selectRound);
@@ -25,4 +25,4 @@ const InfoPanel2 = () => {
   );
 };
 
-export default InfoPanel2;
+export default InfoPanel;
