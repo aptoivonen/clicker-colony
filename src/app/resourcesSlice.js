@@ -15,7 +15,7 @@ export const slice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(updated, (state, action) => {
-        state.food += 1;
+        // TODO:
       })
       .addCase(colonistAdded, (state, action) => {
         const resourceRequirement = action.payload;
