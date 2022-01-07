@@ -1,8 +1,11 @@
 import { useSelector, useDispatch } from "react-redux";
 import { selectRound } from "app/roundSlice";
 import { selectResources } from "app/resourcesSlice";
-import { selectIdleColonists } from "app/colonistsSlice";
-import { addColonistThunk } from "app/colonistsSlice";
+import {
+  addColonistThunk,
+  selectIdleColonists,
+  selectCanAddColonist,
+} from "app/colonistsSlice";
 
 const InfoPanel = () => {
   const dispatch = useDispatch();
@@ -10,6 +13,7 @@ const InfoPanel = () => {
   const round = useSelector(selectRound);
   const { food, money, copper, lead, power } = useSelector(selectResources);
   const idleColonists = useSelector(selectIdleColonists);
+  const canAddColonist = useSelector(selectCanAddColonist);
 
   return (
     <div className="flex">
@@ -20,7 +24,13 @@ const InfoPanel = () => {
       <span className="mx-1">lead {lead}</span>
       <span className="mx-1">power {power}</span>
       <span className="mx-1">idle colonists {idleColonists}</span>
-      <button onClick={() => dispatch(addColonistThunk())}>Add Colonist</button>
+      <button
+        className="py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 disabled:bg-gray-500 cursor-pointer"
+        disabled={!canAddColonist}
+        onClick={() => dispatch(addColonistThunk())}
+      >
+        Add Colonist
+      </button>
     </div>
   );
 };
