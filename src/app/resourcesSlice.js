@@ -30,8 +30,7 @@ export const selectHasEnoughResources = createSelector(
   [selectResources, (state, resourceRequirement) => resourceRequirement],
   (resources, resourceRequirement) =>
     Object.entries(resourceRequirement).every(
-      ([entryKey, entryValue]) =>
-        entryValue >= 0 && resources[entryKey] >= entryValue
+      ([key, value]) => value >= 0 && resources[key] >= value
     )
 );
 
