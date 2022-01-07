@@ -28,12 +28,14 @@ export const slice = createSlice({
 
 export const selectIdleColonists = (state) => state.colonists.idle;
 
+export const selectColonistHireCost = (state) => state.colonists.hireCost;
+
 export const selectAllColonists = (state) =>
   selectIdleColonists(state) + selectWorkers(state);
 
 export const addColonistThunk = () => (dispatch, getState) => {
   const state = getState();
-  const { hireCost } = state.colonists;
+  const hireCost = selectColonistHireCost(state);
   const canAddColonist =
     selectHasEnoughResources(state, hireCost) &&
     selectHasAvailableColonistCapacity(state);
