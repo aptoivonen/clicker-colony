@@ -1,18 +1,15 @@
-import { useSelector } from "react-redux";
-import {
-  selectRound,
-  selectResources,
-  selectIdleColonists,
-  selectAllColonists,
-  selectColonistsCapacity,
-} from "app/selectors";
+import { useSelector, useDispatch } from "react-redux";
+import { selectRound } from "app/roundSlice";
+import { selectResources } from "app/resourcesSlice";
+import { selectIdleColonists } from "app/colonistsSlice";
+import { addColonistThunk } from "app/colonistsSlice";
 
-const InfoPanel = () => {
+const InfoPanel2 = () => {
+  const dispatch = useDispatch();
+
   const round = useSelector(selectRound);
   const { food, money, copper, lead, power } = useSelector(selectResources);
   const idleColonists = useSelector(selectIdleColonists);
-  const allColonists = useSelector(selectAllColonists);
-  const colonistsCapacity = useSelector(selectColonistsCapacity);
 
   return (
     <div className="flex">
@@ -22,12 +19,10 @@ const InfoPanel = () => {
       <span className="mx-1">copper {copper}</span>
       <span className="mx-1">lead {lead}</span>
       <span className="mx-1">power {power}</span>
-      <span className="mx-1">
-        Colonists {idleColonists} / {allColonists}
-      </span>
-      <span className="mx-1">Quarters {colonistsCapacity}</span>
+      <span className="mx-1">idle colonists {idleColonists}</span>
+      <button onClick={() => dispatch(addColonistThunk())}>Add Colonist</button>
     </div>
   );
 };
 
-export default InfoPanel;
+export default InfoPanel2;
