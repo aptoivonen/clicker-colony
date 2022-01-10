@@ -14,6 +14,9 @@ import {
 const updated = createAction("updated");
 const colonistAdded = createAction("colonistAdded");
 const resourceClicked = createAction("resourceClicked");
+const colonistEmployed = createAction("colonistEmployed");
+const colonistIdled = createAction("colonistIdled");
+const buildingLeveledUp = createAction("buildingLeveledUp");
 
 // Thunks
 const update = () => (dispatch, getState) => {
@@ -29,4 +32,41 @@ const addColonist = () => (dispatch, getState) => {
   }
 };
 
-export { updated, colonistAdded, resourceClicked, update, addColonist };
+const clickResource =
+  ({ resourceType }) =>
+  (dispatch, getState) => {
+    dispatch(resourceClicked({ resourceType }));
+  };
+
+const employColonist =
+  ({ buildingType }) =>
+  (dispatch, getState) => {
+    dispatch(colonistEmployed({ buildingType }));
+  };
+
+const idleColonist =
+  ({ buildingType }) =>
+  (dispatch, getState) => {
+    dispatch(colonistIdled({ buildingType }));
+  };
+
+const levelUpBuilding =
+  ({ buildingType }) =>
+  (dispatch, getState) => {
+    dispatch(buildingLeveledUp({ buildingType }));
+  };
+
+export {
+  updated,
+  colonistAdded,
+  resourceClicked,
+  colonistEmployed,
+  colonistIdled,
+  buildingLeveledUp,
+  update,
+  addColonist,
+  clickResource,
+  employColonist,
+  idleColonist,
+  levelUpBuilding,
+};
