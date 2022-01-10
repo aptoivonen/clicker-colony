@@ -45,9 +45,9 @@ export const selectCanAddColonist = createSelector(
 
 export const addColonistThunk = () => (dispatch, getState) => {
   const state = getState();
-  const hireCost = selectColonistHireCost(state);
   const canAddColonist = selectCanAddColonist(state);
   if (canAddColonist) {
+    const hireCost = selectColonistHireCost(state);
     dispatch(colonistAdded(hireCost));
   }
 };
