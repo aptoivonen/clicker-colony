@@ -5,8 +5,6 @@ export const slice = createSlice({
   name: "buildings",
   initialState: {
     quarters: {
-      name: "Quarters",
-      description: "Living quarters for colonists",
       level: 1,
       levelUpCost: {
         money: 10,
@@ -16,8 +14,6 @@ export const slice = createSlice({
       },
     },
     hydroponicFarm: {
-      name: "Hydroponic Farm",
-      description: "Produces food for colonists",
       level: 1,
       levelUpCost: {
         money: 10,
@@ -27,8 +23,6 @@ export const slice = createSlice({
       },
     },
     copperMine: {
-      name: "Copper Mine",
-      description: "Engineers can mine for copper",
       level: 1,
       levelUpCost: {
         copper: 10,
@@ -39,8 +33,6 @@ export const slice = createSlice({
       workers: 0,
     },
     leadMine: {
-      name: "Lead Mine",
-      description: "Engineers can mine for lead",
       level: 1,
       levelUpCost: {
         lead: 10,
