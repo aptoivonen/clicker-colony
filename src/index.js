@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import { store } from "app/store";
 import { Provider } from "react-redux";
-import { updateThunk } from "app/roundSlice";
+import { update } from "app/actionCreators";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -17,5 +17,5 @@ ReactDOM.render(
 
 // Start the updates once per second
 setInterval(() => {
-  store.dispatch(updateThunk());
+  store.dispatch(update());
 }, 1000);

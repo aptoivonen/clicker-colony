@@ -1,11 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
 import { selectRound } from "app/roundSlice";
 import { selectResources } from "app/resourcesSlice";
-import {
-  addColonistThunk,
-  selectIdleColonists,
-  selectCanAddColonist,
-} from "app/colonistsSlice";
+import { selectIdleColonists, selectCanAddColonist } from "app/colonistsSlice";
+import { addColonist } from "app/actionCreators";
 
 const InfoPanel = () => {
   const dispatch = useDispatch();
@@ -25,9 +22,9 @@ const InfoPanel = () => {
       <span className="mx-1">power {power}</span>
       <span className="mx-1">idle colonists {idleColonists}</span>
       <button
-        className="py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 disabled:bg-gray-500 cursor-pointer"
+        className="py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 disabled:bg-gray-500 disabled:cursor-default cursor-pointer"
         disabled={!canAddColonist}
-        onClick={() => dispatch(addColonistThunk())}
+        onClick={() => dispatch(addColonist())}
       >
         Add Colonist
       </button>
