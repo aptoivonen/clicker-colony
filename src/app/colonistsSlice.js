@@ -43,13 +43,4 @@ export const selectCanAddColonist = createSelector(
     selectHasEnoughResources(state, hireCost) && hasAvailableColonistCapacity
 );
 
-export const addColonistThunk = () => (dispatch, getState) => {
-  const state = getState();
-  const canAddColonist = selectCanAddColonist(state);
-  if (canAddColonist) {
-    const hireCost = selectColonistHireCost(state);
-    dispatch(colonistAdded(hireCost));
-  }
-};
-
 export default slice.reducer;

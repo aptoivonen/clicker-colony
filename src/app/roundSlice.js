@@ -16,8 +16,4 @@ export const slice = createSlice({
 
 export const selectRound = (state) => state.round.value;
 
-export const updateThunk = () => (dispatch, getState) => {
-  dispatch(updated());
-};
-
 export default slice.reducer;
