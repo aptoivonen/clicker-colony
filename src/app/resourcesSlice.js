@@ -26,6 +26,18 @@ export const slice = createSlice({
 
 export const selectResources = (state) => state.resources;
 
+/**
+ * Returns the amount of one resource type.
+ * @param {*} state
+ * @param {*} resourceType
+ * @returns
+ */
+export const selectResource = (state, resourceType) =>
+  selectResources(state)[resourceType];
+
+/**
+ * Tells, if colony has enough resources for resource requirement.
+ */
 export const selectHasEnoughResources = createSelector(
   [selectResources, (state, resourceRequirement) => resourceRequirement],
   (resources, resourceRequirement) =>
