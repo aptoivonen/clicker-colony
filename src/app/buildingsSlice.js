@@ -14,6 +14,15 @@ export const slice = createSlice({
         colonists: 10,
       },
     },
+    storage: {
+      level: 1,
+      levelUpCost: {
+        money: 10,
+      },
+      capacity: {
+        resources: 1000,
+      },
+    },
     hydroponicFarm: {
       level: 1,
       levelUpCost: {
@@ -89,7 +98,7 @@ export const selectResourceCapacity = createSelector(
     Object.values(buildings).reduce(
       (previousSum, currentBuilding) =>
         previousSum +
-        currentBuilding.level * (currentBuilding?.capacity?.resource || 0),
+        currentBuilding.level * (currentBuilding?.capacity?.resources || 0),
       0
     )
 );
