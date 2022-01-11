@@ -5,6 +5,12 @@ import App from "./App";
 import { store } from "app/store";
 import { Provider } from "react-redux";
 import { update } from "app/actionCreators";
+import { loadState, saveState } from "utils/localStorage";
+
+// Save all state changes to localStorage
+store.subscribe(() => {
+  saveState(store.getState());
+});
 
 ReactDOM.render(
   <React.StrictMode>
