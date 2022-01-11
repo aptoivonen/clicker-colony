@@ -5,12 +5,12 @@ import {
 } from "app/colonistsSlice";
 
 /**
- * Actions are meant to be used in thunks and slice reducers, not directly in components.
+ * Basic action creators are meant to be used in thunks and slice reducers, not directly in components.
  * Components should only use thunks.
- * Actions and thunks have one-to-one correspondence.
+ * Action creators and thunks have one-to-one correspondence.
  */
 
-// Actions
+// Action creators
 const updated = createAction("updated");
 const colonistAdded = createAction("colonistAdded");
 const resourceClicked = createAction("resourceClicked");
