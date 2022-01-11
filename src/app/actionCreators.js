@@ -3,6 +3,7 @@ import {
   selectCanAddColonist,
   selectColonistHireCost,
 } from "app/colonistsSlice";
+import { selectCanClickResource } from "app/resourcesSlice";
 
 /**
  * Basic action creators are meant to be used in thunks and slice reducers, not directly in components.
@@ -35,7 +36,11 @@ const addColonist = () => (dispatch, getState) => {
 const clickResource =
   ({ resourceType }) =>
   (dispatch, getState) => {
-    dispatch(resourceClicked({ resourceType }));
+    const state = getState();
+    const canClickResource = selectCanClickResource(state);
+    if (canClickResource) {
+      dispatch(resourceClicked({ resourceType }));
+    }
   };
 
 const employColonist =
