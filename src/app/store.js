@@ -3,6 +3,7 @@ import roundReducer from "app/roundSlice";
 import resourcesReducer from "app/resourcesSlice";
 import colonistsReducer from "app/colonistsSlice";
 import buildingsReducer from "app/buildingsSlice";
+import { loadState } from "utils/localStorage";
 
 export const store = configureStore({
   reducer: {
@@ -11,4 +12,5 @@ export const store = configureStore({
     colonists: colonistsReducer,
     buildings: buildingsReducer,
   },
+  preloadedState: loadState(),
 });
