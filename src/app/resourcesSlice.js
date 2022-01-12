@@ -1,7 +1,7 @@
 import { createSlice, createSelector } from "@reduxjs/toolkit";
 import { resourceClicked, colonistAdded, updated } from "app/actionCreators";
 import { decrementResources, incrementResources } from "app/resourceHelpers";
-import { selectAvailableResourceCapacity } from "app/buildingsSlice";
+import { selectHasAvailableResourceCapacity } from "app/buildingsSlice";
 
 const RESOURCE_CLICK_AMOUNT = 100;
 
@@ -65,7 +65,9 @@ export const selectHasEnoughResources = createSelector(
 export const selectCanClickResource = createSelector(
   [(state) => state, (state, resourceType) => resourceType],
   (state, resourceType) =>
-    selectAvailableResourceCapacity(state, resourceType) > 0
+    selectHasAvailableResourceCapacity(state, {
+      [resourceType]: RESOURCE_CLICK_AMOUNT,
+    })
 );
 
 export default slice.reducer;

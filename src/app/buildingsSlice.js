@@ -20,7 +20,7 @@ export const slice = createSlice({
         money: 10,
       },
       capacity: {
-        resources: 100000,
+        resources: 2000,
       },
     },
     hydroponicFarm: {
@@ -113,6 +113,20 @@ export const selectAvailableResourceCapacity = createSelector(
   [(state) => state, (state, resourceType) => resourceType],
   (state, resourceType) =>
     selectResourceCapacity(state) - selectResource(state, resourceType)
+);
+
+/**
+ * Can all of the resource requirement can still be stored in the colony?
+ * @param {*} state
+ * @param {*} resourceType
+ * @returns
+ */
+export const selectHasAvailableResourceCapacity = createSelector(
+  [(state) => state, (state, resourceRequirement) => resourceRequirement],
+  (state, resourceRequirement) =>
+    Object.entries(resourceRequirement).every(
+      ([key, value]) => selectAvailableResourceCapacity(state, key) >= value
+    )
 );
 
 export default slice.reducer;
