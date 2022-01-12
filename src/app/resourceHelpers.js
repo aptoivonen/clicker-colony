@@ -26,9 +26,6 @@ const changeResources = (resourceState, resourceChange, change) => {
  */
 export const decrementResources = (resourceState, resourceRequirement) => {
   changeResources(resourceState, resourceRequirement, "decrement");
-  // Object.entries(resourceState).forEach(([key, value]) => {
-  //   resourceState[key] = Math.max(value - (resourceRequirement[key] || 0), 0);
-  // });
 };
 
 /**
