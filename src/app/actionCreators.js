@@ -33,33 +33,25 @@ const addColonist = () => (dispatch, getState) => {
   }
 };
 
-const clickResource =
-  ({ resourceType }) =>
-  (dispatch, getState) => {
-    const state = getState();
-    const canClickResource = selectCanClickResource(state);
-    if (canClickResource) {
-      dispatch(resourceClicked({ resourceType }));
-    }
-  };
+const clickResource = (resourceType) => (dispatch, getState) => {
+  const state = getState();
+  const canClickResource = selectCanClickResource(state, resourceType);
+  if (canClickResource) {
+    dispatch(resourceClicked(resourceType));
+  }
+};
 
-const employColonist =
-  ({ buildingType }) =>
-  (dispatch, getState) => {
-    dispatch(colonistEmployed({ buildingType }));
-  };
+const employColonist = (buildingType) => (dispatch, getState) => {
+  dispatch(colonistEmployed(buildingType));
+};
 
-const idleColonist =
-  ({ buildingType }) =>
-  (dispatch, getState) => {
-    dispatch(colonistIdled({ buildingType }));
-  };
+const idleColonist = (buildingType) => (dispatch, getState) => {
+  dispatch(colonistIdled(buildingType));
+};
 
-const levelUpBuilding =
-  ({ buildingType }) =>
-  (dispatch, getState) => {
-    dispatch(buildingLeveledUp({ buildingType }));
-  };
+const levelUpBuilding = (buildingType) => (dispatch, getState) => {
+  dispatch(buildingLeveledUp(buildingType));
+};
 
 export {
   updated,
