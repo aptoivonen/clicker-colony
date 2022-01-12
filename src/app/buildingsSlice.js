@@ -116,7 +116,8 @@ export const selectAvailableResourceCapacity = createSelector(
 );
 
 /**
- * Can all of the resource requirement can still be stored in the colony?
+ * Can at least some of the resource requirement still be stored in the colony?
+ * (At least one resource type has available capacity of 1).
  * @param {*} state
  * @param {*} resourceType
  * @returns
@@ -124,8 +125,8 @@ export const selectAvailableResourceCapacity = createSelector(
 export const selectHasAvailableResourceCapacity = createSelector(
   [(state) => state, (state, resourceRequirement) => resourceRequirement],
   (state, resourceRequirement) =>
-    Object.entries(resourceRequirement).every(
-      ([key, value]) => selectAvailableResourceCapacity(state, key) >= value
+    Object.entries(resourceRequirement).some(
+      ([key, value]) => selectAvailableResourceCapacity(state, key) >= 1
     )
 );
 

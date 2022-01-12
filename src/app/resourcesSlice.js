@@ -1,7 +1,10 @@
 import { createSlice, createSelector } from "@reduxjs/toolkit";
 import { resourceClicked, colonistAdded, updated } from "app/actionCreators";
 import { decrementResources, incrementResources } from "app/resourceHelpers";
-import { selectHasAvailableResourceCapacity } from "app/buildingsSlice";
+import {
+  selectAvailableResourceCapacity,
+  selectHasAvailableResourceCapacity,
+} from "app/buildingsSlice";
 
 const RESOURCE_CLICK_AMOUNT = 100;
 
@@ -25,8 +28,7 @@ export const slice = createSlice({
         decrementResources(state, resourceRequirement);
       })
       .addCase(resourceClicked, (state, action) => {
-        const resourceType = action.payload;
-        const resourceIncrement = { [resourceType]: RESOURCE_CLICK_AMOUNT };
+        const resourceIncrement = action.payload;
         incrementResources(state, resourceIncrement);
       });
   },
@@ -60,12 +62,38 @@ export const selectHasEnoughResources = createSelector(
 );
 
 /**
+ * Returns resource Object where amounts have been cut back if available capacity is lacking to fill capacity
+ * but not go over it.
+ */
+export const selectAddableResourceAmount = createSelector(
+  [(state) => state, (state, resourceRequirement) => resourceRequirement],
+  (state, resourceRequirement) =>
+    Object.fromEntries(
+      Object.entries(resourceRequirement).map(([key, value]) => [
+        key,
+        Math.min(value, selectAvailableResourceCapacity(state, key)),
+      ])
+    )
+);
+
+/**
  * Can clicked resource be added to colony? Checks if there is available capacity.
  */
 export const selectCanClickResource = createSelector(
   [(state) => state, (state, resourceType) => resourceType],
   (state, resourceType) =>
     selectHasAvailableResourceCapacity(state, {
+      [resourceType]: RESOURCE_CLICK_AMOUNT,
+    })
+);
+
+/**
+ * Selects all of the click amount or cuts back if there isn't enough storage available.
+ */
+export const selectClickResourceAmountToAdd = createSelector(
+  [(state) => state, (state, resourceType) => resourceType],
+  (state, resourceType) =>
+    selectAddableResourceAmount(state, {
       [resourceType]: RESOURCE_CLICK_AMOUNT,
     })
 );
