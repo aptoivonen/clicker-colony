@@ -1,13 +1,15 @@
 import { createSlice, createSelector } from "@reduxjs/toolkit";
-import { colonistAdded, updated } from "app/actionCreators";
-import { decrementResources } from "app/resourceHelpers";
+import { resourceClicked, colonistAdded, updated } from "app/actionCreators";
+import { decrementResources, incrementResources } from "app/resourceHelpers";
 import { selectAvailableResourceCapacity } from "app/buildingsSlice";
+
+const RESOURCE_CLICK_AMOUNT = 100;
 
 export const slice = createSlice({
   name: "resources",
   initialState: {
     food: 0,
-    money: 15,
+    money: 1500,
     copper: 0,
     lead: 0,
     power: 0,
@@ -21,6 +23,11 @@ export const slice = createSlice({
       .addCase(colonistAdded, (state, action) => {
         const resourceRequirement = action.payload;
         decrementResources(state, resourceRequirement);
+      })
+      .addCase(resourceClicked, (state, action) => {
+        const resourceType = action.payload;
+        const resourceIncrement = { [resourceType]: RESOURCE_CLICK_AMOUNT };
+        incrementResources(state, resourceIncrement);
       });
   },
 });
