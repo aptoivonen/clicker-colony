@@ -6,7 +6,7 @@ import buildingsReducer from "app/buildingsSlice";
 import { loadState, saveState } from "utils/localStorage";
 import throttle from "lodash/throttle";
 
-const preloadedState = loadState();
+// const preloadedState = loadState();
 
 export const store = configureStore({
   reducer: {
@@ -15,15 +15,15 @@ export const store = configureStore({
     colonists: colonistsReducer,
     buildings: buildingsReducer,
   },
-  preloadedState,
+  // preloadedState,
 });
 
 /**
  * Save all state changes to localStorage.
  * Use throttle to save only once a second (JSON.stringify is expensive)
  */
-store.subscribe(
-  throttle(() => {
-    saveState(store.getState());
-  }, 1000)
-);
+// store.subscribe(
+//   throttle(() => {
+//     saveState(store.getState());
+//   }, 1000)
+// );
