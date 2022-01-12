@@ -12,10 +12,10 @@ export const slice = createSlice({
     idle: 1,
     dead: 0,
     consumption: {
-      food: 1,
+      food: 100,
     },
     hireCost: {
-      money: 10,
+      money: 1000,
     },
   },
   reducers: {},

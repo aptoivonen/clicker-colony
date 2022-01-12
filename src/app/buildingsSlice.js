@@ -20,7 +20,7 @@ export const slice = createSlice({
         money: 10,
       },
       capacity: {
-        resources: 1000,
+        resources: 100000,
       },
     },
     hydroponicFarm: {
