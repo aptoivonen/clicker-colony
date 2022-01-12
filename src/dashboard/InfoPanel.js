@@ -1,8 +1,9 @@
 import { useSelector, useDispatch } from "react-redux";
 import { selectRound } from "app/roundSlice";
-import { selectResources } from "app/resourcesSlice";
+import { selectResources, selectCanClickResource } from "app/resourcesSlice";
 import { selectIdleColonists, selectCanAddColonist } from "app/colonistsSlice";
-import { addColonist } from "app/actionCreators";
+import { selectResourceCapacity } from "app/buildingsSlice";
+import { addColonist, clickResource } from "app/actionCreators";
 
 const InfoPanel = () => {
   const dispatch = useDispatch();
@@ -10,7 +11,11 @@ const InfoPanel = () => {
   const round = useSelector(selectRound);
   const { food, money, copper, lead, power } = useSelector(selectResources);
   const idleColonists = useSelector(selectIdleColonists);
+  const resourceCapacity = useSelector(selectResourceCapacity);
   const canAddColonist = useSelector(selectCanAddColonist);
+  const canAddMoney = useSelector((state) =>
+    selectCanClickResource(state, "money")
+  );
 
   return (
     <div className="flex">
@@ -21,6 +26,15 @@ const InfoPanel = () => {
       <span className="mx-1">lead {lead}</span>
       <span className="mx-1">power {power}</span>
       <span className="mx-1">idle colonists {idleColonists}</span>
+      <span className="mx-1">resource capacity {resourceCapacity}</span>
+
+      <button
+        className="py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 disabled:bg-gray-500 disabled:cursor-default cursor-pointer"
+        disabled={!canAddMoney}
+        onClick={() => dispatch(clickResource("money"))}
+      >
+        Add money
+      </button>
       <button
         className="py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 disabled:bg-gray-500 disabled:cursor-default cursor-pointer"
         disabled={!canAddColonist}
