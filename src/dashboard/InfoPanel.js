@@ -4,14 +4,18 @@ import { selectResources, selectCanClickResource } from "app/resourcesSlice";
 import { selectIdleColonists, selectCanAddColonist } from "app/colonistsSlice";
 import { selectResourceCapacity } from "app/buildingsSlice";
 import { addColonist, clickResource } from "app/actionCreators";
+import { formatNumber } from "utils/numberFormatter";
 
 const InfoPanel = () => {
   const dispatch = useDispatch();
 
-  const round = useSelector(selectRound);
-  const { food, money, copper, lead, power } = useSelector(selectResources);
-  const idleColonists = useSelector(selectIdleColonists);
-  const resourceCapacity = useSelector(selectResourceCapacity);
+  const round = useSelector(selectRound).toString();
+  const { food, money, copper, lead, power } = formatNumber(
+    useSelector(selectResources)
+  );
+  const idleColonists = useSelector(selectIdleColonists).toString();
+  const resourceCapacity = formatNumber(useSelector(selectResourceCapacity));
+
   const canAddColonist = useSelector(selectCanAddColonist);
   const canAddMoney = useSelector((state) =>
     selectCanClickResource(state, "money")
