@@ -21,3 +21,5 @@ You are the leader of a mining colony on a distant planet, tasked with the minin
 ## Technologies
 
 React, Redux, Tailwind CSS
+
+## Ideas To Study
