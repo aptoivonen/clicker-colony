@@ -3,8 +3,8 @@ import roundReducer from "app/roundSlice";
 import resourcesReducer from "app/resourcesSlice";
 import colonistsReducer from "app/colonistsSlice";
 import buildingsReducer from "app/buildingsSlice";
-import { loadState, saveState } from "utils/localStorage";
-import throttle from "lodash/throttle";
+// import { loadState, saveState } from "utils/localStorage";
+// import throttle from "lodash/throttle";
 
 // const preloadedState = loadState();
 
