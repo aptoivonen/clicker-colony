@@ -3,6 +3,7 @@ import InfoPanel from "./InfoPanel";
 import { store } from "app/store";
 import { Provider } from "react-redux";
 
+// A test
 test("Renders copper", () => {
   render(
     <Provider store={store}>
