@@ -33,3 +33,5 @@ jobs:
         run: npm test
       - name: Start the app 📤
         run: npm start & npx wait-on --timeout 60000
+      - name: Deploy to Github Pages 🛠
+        run: npm run deploy
