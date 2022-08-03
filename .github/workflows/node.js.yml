@@ -34,4 +34,7 @@ jobs:
       - name: Start the app 📤
         run: npm start & npx wait-on --timeout 60000
       - name: Deploy to Github Pages 🛠
-        run: npm run deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
