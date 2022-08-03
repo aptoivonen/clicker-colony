@@ -23,6 +23,7 @@ const InfoPanel = () => {
 
   return (
     <div className="flex">
+      <span></span>
       <span className="mx-1">Round {round}</span>
       <span className="mx-1">food {food}</span>
       <span className="mx-1">money {money}</span>
