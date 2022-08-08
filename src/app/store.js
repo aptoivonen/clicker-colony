@@ -10,15 +10,19 @@ const isProduction = process.env.NODE_ENV === "production";
 
 const preloadedState = isProduction ? loadState() : undefined;
 
-export const store = configureStore({
-  reducer: {
-    round: roundReducer,
-    resources: resourcesReducer,
-    colonists: colonistsReducer,
-    buildings: buildingsReducer,
-  },
-  preloadedState,
-});
+// Export store creation function for testing
+export const createStore = () =>
+  configureStore({
+    reducer: {
+      round: roundReducer,
+      resources: resourcesReducer,
+      colonists: colonistsReducer,
+      buildings: buildingsReducer,
+    },
+    preloadedState,
+  });
+
+export const store = createStore();
 
 /**
  * Save all state changes to localStorage.
